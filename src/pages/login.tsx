@@ -38,6 +38,13 @@ export default function Login() {
     resolver: zodResolver(signInFormSchema),
   });
 
+function handleSignIn(data: SignInFormData) {
+  console.log(data);
+
+
+}
+
+
   return (
     <Flex w="100vw" h="100vh">
       <Flex w="50%" bg="#2C73EB" align="center" justify="center">
@@ -53,6 +60,7 @@ export default function Login() {
             senha.
           </Text>
 
+        <form onSubmit={handleSubmit(handleSignIn)}>
           <VStack align="flex-start" gap={6} mt={10}>
             <Field.Root invalid={!!errors.email}>
               <Field.Label color="gray.500">Email</Field.Label>
@@ -66,7 +74,7 @@ export default function Login() {
               <Field.ErrorText>{errors.email?.message}</Field.ErrorText>
             </Field.Root>
 
-            <Field.Root invalid={!!errors.email}>
+            <Field.Root invalid={!!errors.password}>
               <Field.Label color="gray.500">Senha</Field.Label>
               <PasswordInput
                 type="password"
@@ -88,7 +96,7 @@ export default function Login() {
               Lembre-me
             </Checkbox>
 
-            <Button
+            <Button type="submit"
               w="full"
               h={16}
               colorPalette="blue"
@@ -99,7 +107,7 @@ export default function Login() {
               Entrar
             </Button>
           </VStack>
-
+        </form>
           <HStack gap={1} justify={"center"} mt={10}>
             <Text color="gray.500" fontWeight="medium" fontSize="md">
               Não possui uma conta?
@@ -111,6 +119,7 @@ export default function Login() {
           </HStack>
         </Stack>
       </VStack>
+
     </Flex>
   );
 }
