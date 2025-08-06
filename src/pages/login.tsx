@@ -60,8 +60,7 @@ function handleSignIn(data: SignInFormData) {
             senha.
           </Text>
 
-        <form onSubmit={handleSubmit(handleSignIn)}>
-          <VStack align="flex-start" gap={6} mt={10}>
+          <VStack as="form" onSubmit={handleSubmit(handleSignIn)} align="flex-start" gap={6} mt={10}>
             <Field.Root invalid={!!errors.email}>
               <Field.Label color="gray.500">Email</Field.Label>
               <Input
@@ -107,7 +106,7 @@ function handleSignIn(data: SignInFormData) {
               Entrar
             </Button>
           </VStack>
-        </form>
+
           <HStack gap={1} justify={"center"} mt={10}>
             <Text color="gray.500" fontWeight="medium" fontSize="md">
               Não possui uma conta?
