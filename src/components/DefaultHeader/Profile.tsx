@@ -4,7 +4,7 @@ export function Profile(){
 
 return(
 
-            <Avatar src="https://avatars.githubusercontent.com/u/107716288?v=4" />
+            <Avatar src="https://avatars.githubusercontent.com/u/173325708?v=4" />
 )
 
 
