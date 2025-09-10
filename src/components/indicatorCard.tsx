@@ -23,7 +23,7 @@ export function IndicatorCard({
 
 
   return (
-    <Card.Root>
+    <Card.Root _hover={{shadow:"md"}}>
       <Card.Body flexDir="row" alignItems="center" gap={6}>
         <Stat.Root>
           <Stat.Label fontSize={"md"}>{label}</Stat.Label>
