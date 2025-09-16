@@ -1,4 +1,4 @@
-import { Card, Flex, Heading, HStack, Icon, Text, VStack } from "@chakra-ui/react";
+import {  Flex, Heading, HStack, Icon, Text, VStack } from "@chakra-ui/react";
 import { IconType } from "react-icons";
 
 
@@ -10,10 +10,10 @@ interface RecentActivityProps {
 
 
 }
-export function RecentActivity({title, icon, colorPallet, dateTime}: RecentActivityProps) {
+export function CardBase({title, icon, colorPallet, dateTime}: RecentActivityProps) {
   return(
 
-    <HStack _hover={{backgroundColor:"gray.50"}} p={4} rounded="md" gap={6}>
+    <HStack _hover={{backgroundColor:"gray.50", rounded:"md", _dark:{backgroundColor:"gray.900"}}} p={4} rounded="md" gap={6}>
         <Flex
           justify={"center"}
           align={"center"}

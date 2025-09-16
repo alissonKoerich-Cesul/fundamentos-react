@@ -1,12 +1,16 @@
 import { Card, HStack } from "@chakra-ui/react";
+import { time } from "console";
 import { IconType } from "react-icons";
 import { AiFillQuestionCircle } from "react-icons/ai";
 import { BiAward, BiCalendar } from "react-icons/bi";
-import { FaBookOpen, FaGraduationCap } from "react-icons/fa";
+import { FaBookOpen, FaGraduationCap, FaRegCalendarAlt } from "react-icons/fa";
 import { FaArrowTrendUp } from "react-icons/fa6";
-import { IoIosBook, IoMdPeople } from "react-icons/io";
+import { FiAlertCircle } from "react-icons/fi";
+import { IoIosAlert, IoIosBook, IoMdPeople } from "react-icons/io";
+import { SiGooglemeet } from "react-icons/si";
+import { da, id } from "zod/locales";
+import { CardBase } from "@/components/cardBase";
 import { IndicatorCard } from "@/components/indicatorCard";
-import { RecentActivity } from "@/components/recentActivity";
 import { DefaultLayout } from "@/layouts/DefaultLayout";
 
 export default function Home() {
@@ -26,7 +30,7 @@ export default function Home() {
     {
       id: 3,
       type: "course",
-      title: "Novo curso criado: Análise de Ddoas",
+      title: "Novo curso criado: Análise de Dados",
       time: "1 hora atrás",
     },
     {
@@ -37,11 +41,38 @@ export default function Home() {
     },
   ];
 
+  const upcomingEvents = [
+    {
+      id: 1,
+      title: "Inicio das Provas Finais",
+      time: "2025-12-07 08:00",
+      colorPallet: "red",
+      type:"exam"
+    },
+    {
+      id: 2,
+      title: "Reuniao de Cordenadores",
+      time: "2025-12-18 14:00",
+      colorPallet: "blue",
+      type:"meeting"
+    },
+    {
+      id: 3,
+      title: "Fim do Semestre",
+      time: "2025-12-20 17:00",
+      colorPallet: "orange",
+      type:"deeadline"
+    },
+  ];
+
   const iconMap: Record<string, IconType> = {
     enrollment: IoMdPeople,
     grade: BiAward,
     course: IoIosBook,
     calendar: BiCalendar,
+    exam: IoIosAlert,
+    meeting: SiGooglemeet,
+    deadline: FaRegCalendarAlt,
   };
 
   return (
@@ -93,18 +124,41 @@ export default function Home() {
           </Card.Header>
           <Card.Body gap={10}>
             {recentActivities.map((activity) => {
-              const ActivityIcon = iconMap[activity.type] ?? AiFillQuestionCircle;
-              return(
-                   <RecentActivity
-                      key={activity.id}
-                      dateTime={"2 minutos atrás"}
-                      icon={ActivityIcon}
-                      title={activity.title}
-                      colorPallet="blue"
-            />
-            )}
-          )}
+              const ActivityIcon =
+                iconMap[activity.type] ?? AiFillQuestionCircle;
+              return (
+                <CardBase
+                  key={activity.id}
+                  dateTime={"2 minutos atrás"}
+                  icon={ActivityIcon}
+                  title={activity.title}
+                  colorPallet="blue"
+                />
+              );
+            })}
+          </Card.Body>
+        </Card.Root>
+      </HStack>
 
+      <HStack mt={8}>
+        <Card.Root>
+          <Card.Header>
+            <Card.Title>Ultimos Eventos</Card.Title>
+          </Card.Header>
+          <Card.Body gap={10}>
+            {upcomingEvents.map((events) => {
+              const EventIcon =
+              iconMap[events.type] ?? AiFillQuestionCircle;
+              return (
+                <CardBase
+                  key={events.id}
+                  dateTime={events.time}
+                  icon={EventIcon}
+                  title={events.title}
+                  colorPallet={events.colorPallet}
+                />
+              );
+            })}
           </Card.Body>
         </Card.Root>
       </HStack>
