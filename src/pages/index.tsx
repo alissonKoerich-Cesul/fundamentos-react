@@ -1,14 +1,11 @@
 import { Card, HStack } from "@chakra-ui/react";
-import { time } from "console";
 import { IconType } from "react-icons";
 import { AiFillQuestionCircle } from "react-icons/ai";
 import { BiAward, BiCalendar } from "react-icons/bi";
-import { FaBookOpen, FaGraduationCap, FaRegCalendarAlt } from "react-icons/fa";
+import { FaBookOpen, FaCalendarAlt, FaGraduationCap } from "react-icons/fa";
 import { FaArrowTrendUp } from "react-icons/fa6";
-import { FiAlertCircle } from "react-icons/fi";
-import { IoIosAlert, IoIosBook, IoMdPeople } from "react-icons/io";
-import { SiGooglemeet } from "react-icons/si";
-import { da, id } from "zod/locales";
+import { IoIosBook, IoMdPeople } from "react-icons/io";
+import { IoAlertCircleOutline } from "react-icons/io5";
 import { CardBase } from "@/components/cardBase";
 import { IndicatorCard } from "@/components/indicatorCard";
 import { DefaultLayout } from "@/layouts/DefaultLayout";
@@ -47,21 +44,21 @@ export default function Home() {
       title: "Inicio das Provas Finais",
       time: "2025-12-07 08:00",
       colorPallet: "red",
-      type:"exam"
+      type: "exam",
     },
     {
       id: 2,
       title: "Reuniao de Cordenadores",
       time: "2025-12-18 14:00",
       colorPallet: "blue",
-      type:"meeting"
+      type: "meeting",
     },
     {
       id: 3,
       title: "Fim do Semestre",
       time: "2025-12-20 17:00",
       colorPallet: "orange",
-      type:"deeadline"
+      type: "deadline",
     },
   ];
 
@@ -70,9 +67,9 @@ export default function Home() {
     grade: BiAward,
     course: IoIosBook,
     calendar: BiCalendar,
-    exam: IoIosAlert,
-    meeting: SiGooglemeet,
-    deadline: FaRegCalendarAlt,
+    exam: IoAlertCircleOutline,
+    meeting: IoMdPeople,
+    deadline: FaCalendarAlt,
   };
 
   return (
@@ -117,7 +114,7 @@ export default function Home() {
         />
       </HStack>
 
-      <HStack mt={8}>
+      <HStack mt={8} align={"start"} gap={8}>
         <Card.Root>
           <Card.Header>
             <Card.Title>Atividades Recentes</Card.Title>
@@ -138,17 +135,14 @@ export default function Home() {
             })}
           </Card.Body>
         </Card.Root>
-      </HStack>
 
-      <HStack mt={8}>
         <Card.Root>
           <Card.Header>
-            <Card.Title>Ultimos Eventos</Card.Title>
+            <Card.Title>Proximos Eventos</Card.Title>
           </Card.Header>
           <Card.Body gap={10}>
             {upcomingEvents.map((events) => {
-              const EventIcon =
-              iconMap[events.type] ?? AiFillQuestionCircle;
+              const EventIcon = iconMap[events.type] ?? AiFillQuestionCircle;
               return (
                 <CardBase
                   key={events.id}
