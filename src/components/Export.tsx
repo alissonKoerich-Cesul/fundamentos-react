@@ -12,6 +12,7 @@ export function Export() {
       asChild
     >
       <Button variant="outline" size={"md"}>
+        Exportar
         <LuDownload />
       </Button>
     </DownloadTrigger>

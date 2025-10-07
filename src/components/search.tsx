@@ -6,7 +6,7 @@ import { LuSearch } from "react-icons/lu";
 export function Search() {
   return (
    <InputGroup flex="1" startElement={<LuSearch />}>
-    <Input placeholder="Pesquisar alunos" />
+    <Input placeholder="Buscar por nome, email ou curso..." />
   </InputGroup>
   )
 
