@@ -6,8 +6,8 @@ import { FaBookOpen, FaCalendarAlt, FaGraduationCap } from "react-icons/fa";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { IoIosBook, IoMdPeople } from "react-icons/io";
 import { IoAlertCircleOutline } from "react-icons/io5";
-import { CardBase } from "@/components/cardBase";
-import { IndicatorCard } from "@/components/indicatorCard";
+import { CardBase } from "@/components/StudentsHeader/cardBase";
+import { IndicatorCard } from "@/components/StudentsHeader/indicatorCard";
 import { DefaultLayout } from "@/layouts/DefaultLayout";
 
 export default function Home() {

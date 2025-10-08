@@ -1,11 +1,51 @@
-import { Card, HStack, InputGroup, SimpleGrid } from "@chakra-ui/react";
-import { LuSearch } from "react-icons/lu";
-import { ActionButton } from "@/components/ActionButton";
-import { Export } from "@/components/Export";
-import { FilterMenu } from "@/components/filterMenu";
-import { Search } from "@/components/search";
-import { StatusFilter } from "@/components/statusFilter";
+import { HStack } from "@chakra-ui/react";
+import { StudentsHeader } from "@/components/StudentsHeader";
 import { DefaultLayout } from "@/layouts/DefaultLayout";
+
+
+type Student = {
+  name: string;
+};
+
+const defaultStudents: Student[] = [
+  { name: "João" },
+  { name: "Maria" },
+];
+
+type Course = {
+  name: string;
+};
+
+const defaultCourses: Course[] = [
+  { name: "Engenharia de Software" },
+  { name: "Medicina" },
+];
+
+type Semester = {
+  name: string;
+};
+
+const defaultSemesters: Semester[] = [
+  { name: "1º Semestre" },
+  { name: "2º Semestre" },
+];
+
+type Enrollment = {
+  id: number;
+  student: Student;
+  course: Course;
+  semester: Semester;
+};
+
+const defaultEnrollments: Enrollment[] = [
+  {
+    id: 1,
+    student: { name: "João" },
+    course: { name: "Engenharia de Software" },
+    semester: { name: "1º Semestre" },
+  },
+];
+
 
 export default function Students() {
   return (
@@ -14,27 +54,12 @@ export default function Students() {
       description="Gerencialmento geral dos estudantes universitários"
     >
       <HStack>
-        <Card.Root>
-          <Card.Body>
-            <SimpleGrid row={2} rowGap={4}>
-              <InputGroup flex="1" startElement={<LuSearch />}>
-                <Search />
-              </InputGroup>
+        <StudentsHeader />
 
-              <HStack mt={6} direction={"column"}>
+        {/* ESTUDANTE / CURSO / SEMESTRE / MATRICULA / ACOES */}
 
-                <StatusFilter />
-                <FilterMenu />
-                <Export />
-                <ActionButton />
 
-              </HStack>
-
-            </SimpleGrid>
-          </Card.Body>
-        </Card.Root>
       </HStack>
-
     </DefaultLayout>
   );
 }
